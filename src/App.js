@@ -1,9 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Selection from "./components/Selection";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App"></div>
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<Selection />} />
+      </Routes>
+    </HashRouter>
   );
 }
 
