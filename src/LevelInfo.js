@@ -21,6 +21,7 @@ const LevelInfo = {
     ],
     alt: "Easy Level",
     name: "Robot City",
+    id: "easy",
   },
   med: {
     url: waldoMedium,
@@ -31,6 +32,7 @@ const LevelInfo = {
     ],
     alt: "Medium Level",
     name: "Universe 113",
+    id: "medium",
   },
   hard: {
     url: waldoHard,
@@ -40,7 +42,8 @@ const LevelInfo = {
       { name: "Ash Ketchum", series: "Pokemon", url: hard3 },
     ],
     alt: "Hard Level",
-    name: "AD 2222"
+    name: "AD 2222",
+    id: "hard",
   }
 }
 

@@ -5,7 +5,7 @@ function Selection(props) {
   const { setLevel } = props;
 
   return (
-    <div className="h-screen bg-black font-nova py-10">
+    <div className="h-screen bg-black font-nova flex flex-col justify-center py-10">
       <h1 className="font-bold text-5xl text-center">
         <span className="text-white">Among</span>
         <span className="text-[#ff0000]">Us</span>

@@ -8,8 +8,9 @@ function Timer(props) {
     let interval
 
     if (isActive) {
+      const startTime = Date.now()
       interval = setInterval(() => {
-        setTime((time) => time + 10)
+        setTime(Date.now() - startTime)
       }, 10)
     }
 

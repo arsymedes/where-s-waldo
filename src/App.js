@@ -9,7 +9,7 @@ function App() {
   const [level, setLevel] = useState(LevelInfo.easy)
 
   return (
-    <HashRouter className="scrollbar-thin scrollbar-track-black scrollbar-thumb-[#ff0000]font-nova">
+    <HashRouter className="">
       <Routes>
         <Route path="/" element={<Selection setLevel={setLevel}/>} />
         <Route path="/game" element={<Game level={level}/>} />

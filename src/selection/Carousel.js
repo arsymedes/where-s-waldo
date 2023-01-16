@@ -19,6 +19,8 @@ function Carousel(props) {
     <Swiper
       style={{
         "--swiper-pagination-color": "#fff",
+        marginRight: 0 + "px",
+        marginLeft: 0 + "px",
       }}
       slidesPerView={1}
       loop={true}
