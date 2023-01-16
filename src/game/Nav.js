@@ -4,7 +4,7 @@ import CharsPopup from "./CharsPopup";
 import { Link } from "react-router-dom";
 
 function Nav(props) {
-  const { chars } = props
+  const { chars, isActive } = props
   const [showPopup, setShowPopup] = useState(false)
 
   return (
@@ -15,7 +15,7 @@ function Nav(props) {
           <span className="text-[#ff0000]">Us</span>
         </Link>
       </li>
-      <Timer />
+      <Timer isActive={isActive} />
       <li className="">
         <button onClick={() => setShowPopup((prevState) => !prevState)} className="bg-[#8d0c0c] text-white grid place-items-center text-xl w-8 h-8 rounded-[50%] font-bold hover:bg-[#ff0000] duration-200">
           3
