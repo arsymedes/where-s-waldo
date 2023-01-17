@@ -1,28 +1,26 @@
-import React, { useState, useEffect } from "react";
-import checkPos from "./checkPos"
+import React, { useState } from "react";
+import { checkPos } from "./Backend";
+import { useNavigate } from "react-router-dom";
 
 function Main(props) {
-  const { url, chars, name, setIsActive } = props;
+  const { url, chars, name, setIsActive, found, setFound } = props;
   const [clicked, setClicked] = useState(false);
   const [clickInfo, setClickInfo] = useState({});
   const [popup, setPopup] = useState(false);
   const [isFound, setIsFound] = useState(false);
-  const [found, setFound] = useState([]);
-
-  useEffect(() => {
-    setFound([false, false, false]);
-  }, []);
+  const navigate = useNavigate()
 
   async function isChar(index) {
     const data = await checkPos(name);
-    const [xAns, yAns] = data[index]
+    const [xAns, yAns] = data[index];
 
-    const temp =
+    const match =
       Math.abs(xAns - clickInfo.x / clickInfo.width) < 0.035 &&
       Math.abs(yAns * clickInfo.height + clickInfo.yOff - clickInfo.y) <
         0.035 * clickInfo.width;
-    setIsFound(temp);
-    return temp;
+
+    setIsFound(match);
+    return match;
   }
 
   function handleClick(event) {
@@ -41,19 +39,24 @@ function Main(props) {
   }
 
   async function handleCharPick(index) {
-    const isTrue = await isChar(index)
+    const isTrue = await isChar(index);
     if (isTrue) {
       setFound((state) => {
         const tempState = [...state];
         tempState[index] = true;
+
+        if (JSON.stringify(tempState) === JSON.stringify([true, true, true])) {
+          navigate("/highscore")
+        }
         return tempState;
       });
     }
+
     setClicked((prevState) => !prevState);
     setPopup(() => {
-      setTimeout(() => setPopup(false), 2000)
-      return true
-    })
+      setTimeout(() => setPopup(false), 2000);
+      return true;
+    });
   }
 
   return (
@@ -85,19 +88,23 @@ function RemainChars(props) {
     <ul
       className="absolute overflow-hidden top-20 min-w-[6rem] bg-white bg-opacity-70 rounded-xl"
       style={{
-        left: `calc(${clickInfo.x}px ${clickInfo.x + 80 > clickInfo.width ? "- 18vw" : "+ 4vw"})`,
+        left: `calc(${clickInfo.x}px ${
+          clickInfo.x + 80 > clickInfo.width ? "- 18vw" : "+ 4vw"
+        })`,
         top: `calc(${clickInfo.y}px - 3.5vw)`,
       }}
     >
-      {chars.filter((char) => !found[char.id]).map((char) => (
-        <li
-          key={char.name}
-          onClick={() => handleCharPick(char.id)}
-          className="hover:scale-110 overflow-hidden duration-200 p-2 hover:bg-white cursor-pointer"
-        >
-          {char.name}
-        </li>
-      ))}
+      {chars
+        .filter((char) => !found[char.id])
+        .map((char) => (
+          <li
+            key={char.name}
+            onClick={() => handleCharPick(char.id)}
+            className="hover:scale-110 overflow-hidden duration-200 p-2 hover:bg-white cursor-pointer"
+          >
+            {char.name}
+          </li>
+        ))}
     </ul>
   );
 }
@@ -106,7 +113,7 @@ function Notif(props) {
   const { isFound } = props;
   const trueMsg = "You Found One!";
   const falseMsg = "Wrong One, Try Again!";
-  
+
   return (
     <div
       className={`fixed top-16 right-[50%] translate-x-1/2 px-3 py-1 rounded-xl text-white ${
