@@ -1,6 +1,7 @@
 import "./App.css";
 import Selection from "./selection/Selection";
 import Game from "./game/Game"
+import HighScore from "./HighScore";
 import LevelInfo from "./LevelInfo";
 import React, { useState } from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Selection setLevel={setLevel}/>} />
         <Route path="/game" element={<Game level={level}/>} />
+        <Route path="/highscore" element={<HighScore />} />
       </Routes>
     </HashRouter>
   );

@@ -67,6 +67,7 @@ function Main(props) {
           chars={chars}
           clickInfo={clickInfo}
           handleCharPick={handleCharPick}
+          found={found}
         />
       )}
       {clicked && <Circle clickInfo={clickInfo} />}
@@ -76,7 +77,7 @@ function Main(props) {
 }
 
 function RemainChars(props) {
-  const { chars, clickInfo, handleCharPick } = props;
+  const { chars, clickInfo, handleCharPick, found } = props;
 
   return (
     <ul
@@ -86,7 +87,7 @@ function RemainChars(props) {
         top: `calc(${clickInfo.y}px - 3.5vw)`,
       }}
     >
-      {chars.map((char, index) => (
+      {chars.filter((el, index) => !found[index]).map((char, index) => (
         <li
           key={char.name}
           onClick={() => handleCharPick(index)}
