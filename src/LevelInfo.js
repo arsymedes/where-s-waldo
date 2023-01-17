@@ -27,7 +27,7 @@ const LevelInfo = {
     url: waldoMedium,
     chars: [
       { name: "Waldo", series: "Where's Waldo?", url: med1 },
-      { name: "Crash", series: "Crash Bandicoot", url: med2 },
+      { name: "Bill Cipher", series: "Gravity Falls", url: med2 },
       { name: "R2D2", series: "Star Wars", url: med3 },
     ],
     alt: "Medium Level",
