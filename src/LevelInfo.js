@@ -15,9 +15,9 @@ const LevelInfo = {
   easy: {
     url: waldoEasy,
     chars: [
-      { name: "Mojo Jojo", series: "Power Puff Girls", url: easy1 },
-      { name: "Goku", series: "Dragon Ball", url: easy2 },
-      { name: "Batman", series: "The Dark Knight", url: easy3 },
+      { id: 0, name: "Mojo Jojo", series: "Power Puff Girls", url: easy1 },
+      { id: 1, name: "Goku", series: "Dragon Ball", url: easy2 },
+      { id: 2, name: "Batman", series: "The Dark Knight", url: easy3 },
     ],
     alt: "Easy Level",
     name: "Robot City",
@@ -26,9 +26,9 @@ const LevelInfo = {
   med: {
     url: waldoMedium,
     chars: [
-      { name: "Waldo", series: "Where's Waldo?", url: med1 },
-      { name: "Bill Cipher", series: "Gravity Falls", url: med2 },
-      { name: "R2D2", series: "Star Wars", url: med3 },
+      { id: 0, name: "Waldo", series: "Where's Waldo?", url: med1 },
+      { id: 1, name: "Bill Cipher", series: "Gravity Falls", url: med2 },
+      { id: 2, name: "R2D2", series: "Star Wars", url: med3 },
     ],
     alt: "Medium Level",
     name: "Universe 113",
@@ -37,9 +37,9 @@ const LevelInfo = {
   hard: {
     url: waldoHard,
     chars: [
-      { name: "Spider-man", series: "Spider-man", url: hard1 },
-      { name: "Ferb", series: "Phineas & Ferb", url: hard2 },
-      { name: "Ash Ketchum", series: "Pokemon", url: hard3 },
+      { id: 0, name: "Spider-man", series: "Spider-man", url: hard1 },
+      { id: 1, name: "Ferb", series: "Phineas & Ferb", url: hard2 },
+      { id: 2, name: "Ash Ketchum", series: "Pokemon", url: hard3 },
     ],
     alt: "Hard Level",
     name: "AD 2222",

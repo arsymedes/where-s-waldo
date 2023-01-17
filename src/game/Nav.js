@@ -1,32 +1,36 @@
-import React, {useState} from "react";
-import Timer from "./Timer";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function Nav(props) {
-  const { chars, isActive } = props
-  const [showPopup, setShowPopup] = useState(false)
+  const { chars, isActive } = props;
+  const [showPopup, setShowPopup] = useState(false);
 
   return (
     <nav className="bg-[#0e0c31] grid grid-cols-3 place-items-center px-4 py-2 fixed w-full list-none z-10">
       <li className="font-bold text-xl sm:text-2xl hover:scale-110 duration-150">
-        <Link to="/" >
+        <Link to="/">
           <span className="text-white">Among</span>
           <span className="text-[#ff0000]">Us</span>
         </Link>
       </li>
       <Timer isActive={isActive} />
       <li className="">
-        <button onClick={() => setShowPopup((prevState) => !prevState)} className="bg-[#8d0c0c] text-white grid place-items-center text-xl w-8 h-8 rounded-[50%] font-bold hover:bg-[#ff0000] duration-200">
+        <button
+          onClick={() => setShowPopup((prevState) => !prevState)}
+          className="bg-[#8d0c0c] text-white grid place-items-center text-xl w-8 h-8 rounded-[50%] font-bold hover:bg-[#ff0000] duration-200"
+        >
           3
         </button>
-        {showPopup && <CharsPopup className="transition-all duration-500" chars={chars}/>}
+        {showPopup && (
+          <CharsPopup className="transition-all duration-500" chars={chars} />
+        )}
       </li>
     </nav>
   );
 }
 
 function CharsPopup(props) {
-  const { chars } = props
+  const { chars } = props;
 
   return (
     <ul className="fixed right-[12%] top-[11%] bg-[#17134d] py-4 px-2 rounded-2xl text-white ">
@@ -42,7 +46,33 @@ function CharsPopup(props) {
         </li>
       ))}
     </ul>
-    )
+  );
+}
+
+function Timer(props) {
+  const { isActive } = props;
+  const [time, setTime] = useState(0);
+
+  useEffect(() => {
+    let interval;
+
+    if (isActive) {
+      const startTime = Date.now();
+      interval = setInterval(() => {
+        setTime(Date.now() - startTime);
+      }, 10);
+    }
+
+    return () => clearInterval(interval);
+  }, [isActive]);
+
+  return (
+    <li className="text-white text-xl sm:text-2xl">
+      <span>{("0" + Math.floor((time / 3600000) % 60)).slice(-2)}:</span>
+      <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
+      <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}</span>
+    </li>
+  );
 }
 
 export default Nav;

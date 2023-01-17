@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import CharsPos from "./CharsPos";
+import checkPos from "./checkPos"
 
 function Main(props) {
   const { url, chars, name, setIsActive } = props;
@@ -13,8 +13,9 @@ function Main(props) {
     setFound([false, false, false]);
   }, []);
 
-  function isChar(index) {
-    const [xAns, yAns] = CharsPos[name][index];
+  async function isChar(index) {
+    const data = await checkPos(name);
+    const [xAns, yAns] = data[index]
 
     const temp =
       Math.abs(xAns - clickInfo.x / clickInfo.width) < 0.035 &&
@@ -39,8 +40,9 @@ function Main(props) {
     setClickInfo({ x, y, width, height, xOff, yOff });
   }
 
-  function handleCharPick(index) {
-    if (isChar(index)) {
+  async function handleCharPick(index) {
+    const isTrue = await isChar(index)
+    if (isTrue) {
       setFound((state) => {
         const tempState = [...state];
         tempState[index] = true;
@@ -83,14 +85,14 @@ function RemainChars(props) {
     <ul
       className="absolute overflow-hidden top-20 min-w-[6rem] bg-white bg-opacity-70 rounded-xl"
       style={{
-        left: `calc(${clickInfo.x}px + 4vw)`,
+        left: `calc(${clickInfo.x}px ${clickInfo.x + 80 > clickInfo.width ? "- 18vw" : "+ 4vw"})`,
         top: `calc(${clickInfo.y}px - 3.5vw)`,
       }}
     >
-      {chars.filter((el, index) => !found[index]).map((char, index) => (
+      {chars.filter((char) => !found[char.id]).map((char) => (
         <li
           key={char.name}
-          onClick={() => handleCharPick(index)}
+          onClick={() => handleCharPick(char.id)}
           className="hover:scale-110 overflow-hidden duration-200 p-2 hover:bg-white cursor-pointer"
         >
           {char.name}
