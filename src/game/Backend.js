@@ -1,6 +1,8 @@
 import { auth, db } from "../firebase-config";
 import { onAuthStateChanged, signInAnonymously } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+
+
 
 async function authLogic() {
   let userID;
@@ -33,6 +35,25 @@ async function getHighScores(name) {
   }
 }
 
+async function getUserData(userID, name) {
+  const userDocRef = doc(db, "users", userID);
+  const userPromise = await getDoc(userDocRef)
+
+  if (userPromise.exists()) {
+    return {
+      userName: userPromise.data().name,
+      userScore: userPromise.data()[name]
+    }
+  } else {
+    console.log("I dont exist");
+    return {
+      userName: "",
+      userScore: Infinity
+    }
+  }
+}
+
+
 async function checkPos(docName) {
   const docRef = doc(db, "charsPos", docName);
   const docSnap = await getDoc(docRef);
@@ -44,4 +65,13 @@ async function checkPos(docName) {
   }
 }
 
-export { checkPos, authLogic, getHighScores };
+async function sendData(userID, userName, userScore, name, highScores) {
+  const highScoresRef = doc(db, "highScores", name);
+  const userColRef = doc(db, "users", userID);
+
+  setDoc(highScoresRef, {highScores})
+  setDoc(userColRef, {[name]: userScore, name: userName}, { merge: true})
+
+}
+
+export { checkPos, authLogic, getHighScores, getUserData, sendData };
