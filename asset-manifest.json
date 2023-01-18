@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/where-s-waldo/static/css/main.a6f9e0a4.css",
+    "main.js": "/where-s-waldo/static/js/main.436fadbc.js",
+    "static/js/787.4ce2c4d5.chunk.js": "/where-s-waldo/static/js/787.4ce2c4d5.chunk.js",
+    "static/media/waldo-hard.jpg": "/where-s-waldo/static/media/waldo-hard.314cec99f414807b7e27.jpg",
+    "static/media/waldo-easy.jpg": "/where-s-waldo/static/media/waldo-easy.8ad8cd812dae8d55031c.jpg",
+    "static/media/waldo-medium.jpg": "/where-s-waldo/static/media/waldo-medium.0d4fe7c106039f77baa0.jpg",
+    "static/media/easy-2.png": "/where-s-waldo/static/media/easy-2.7da9740f2e5200e4ff46.png",
+    "static/media/hard-1.png": "/where-s-waldo/static/media/hard-1.e235857135dcd3fd0b8a.png",
+    "static/media/hard-3.png": "/where-s-waldo/static/media/hard-3.c3d32e6bd7acf2514658.png",
+    "static/media/med-3.png": "/where-s-waldo/static/media/med-3.c8ad47efd553f0623276.png",
+    "static/media/hard-2.png": "/where-s-waldo/static/media/hard-2.54956ef8332be8b7ff3b.png",
+    "static/media/easy-1.png": "/where-s-waldo/static/media/easy-1.62feedf2f3e41d749c69.png",
+    "static/media/med-1.png": "/where-s-waldo/static/media/med-1.b6a74ad24c75a19f653b.png",
+    "static/media/easy-3.png": "/where-s-waldo/static/media/easy-3.1f099830608d63ac7793.png",
+    "static/media/med-2.png": "/where-s-waldo/static/media/med-2.95e70a7225150becbfc3.png",
+    "index.html": "/where-s-waldo/index.html",
+    "main.a6f9e0a4.css.map": "/where-s-waldo/static/css/main.a6f9e0a4.css.map",
+    "main.436fadbc.js.map": "/where-s-waldo/static/js/main.436fadbc.js.map",
+    "787.4ce2c4d5.chunk.js.map": "/where-s-waldo/static/js/787.4ce2c4d5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a6f9e0a4.css",
+    "static/js/main.436fadbc.js"
+  ]
+}
