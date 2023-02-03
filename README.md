@@ -1,5 +1,7 @@
 # Where's Waldo
 
+[Click me For a Live Demo!](https://arsymedes.github.io/where-s-waldo)
+
 ## What is this Application?
 
 Where's Waldo is a photo-tagging game, where the player has to find 3 unique characters in an image
