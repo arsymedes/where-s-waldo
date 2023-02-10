@@ -64,7 +64,7 @@ function Timer(props) {
     }
 
     return () => clearInterval(interval);
-  }, [isActive]);
+  }, [isActive, setTime]);
 
   return (
     <li className="text-white text-xl sm:text-2xl">
